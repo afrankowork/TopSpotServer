@@ -12,14 +12,14 @@ router.post('/register', function(req, res) {
     let username = req.body.user.username;
     let email = req.body.user.email;
     let password = req.body.user.password;
-
+    console.log('made it this far')
     User.create({
         username: username,
         email: email,
         password: bcrypt.hashSync(password, 10)
     }).then(
         function success(user){
-
+            console.log('success')
             let token = jwt.sign({id:user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24})
 
             res.json({

@@ -3,7 +3,8 @@ let express = require('express');
 let app = express();
 const port = 3000;
 let sequelize = require('./db');
-let user = require('./controllers/userController')
+let user = require('./controllers/userController');
+let comment = require('./controllers/commentController');
 
 
 sequelize.sync();
@@ -17,6 +18,10 @@ app.use('/user', user);
 
 /* Protected Routes */
 app.use(require('./middleware/validate-session'))
+
+app.use('/comment', comment);
+
+
 
 
 
