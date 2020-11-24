@@ -1,7 +1,7 @@
 require('dotenv').config();
 let express = require('express');
 let app = express();
-const port = 3000;
+
 let sequelize = require('./db');
 let user = require('./controllers/userController');
 let comment = require('./controllers/commentController');
@@ -26,6 +26,6 @@ app.use('/rest', restList);
 
 
 
-app.listen(port, function(){
-    console.log(`App is listening on ${port}`)
+app.listen(process.env.PORT, function(){
+    console.log(`App is listening on ${process.env.PORT}`)
 })
