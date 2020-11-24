@@ -5,6 +5,7 @@ const port = 3000;
 let sequelize = require('./db');
 let user = require('./controllers/userController');
 let comment = require('./controllers/commentController');
+let restList = require('./controllers/restaurantListController');
 
 
 sequelize.sync();
@@ -20,7 +21,7 @@ app.use('/user', user);
 app.use(require('./middleware/validate-session'))
 
 app.use('/comment', comment);
-
+app.use('/rest', restList);
 
 
 
