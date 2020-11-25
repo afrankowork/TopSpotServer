@@ -44,7 +44,7 @@ router.post('/login', function(req, res) {
                             sessionToken: token
                         })
                     }
-                });
+                })
                 
                 } else {
                 res.status(500).send({error: "You are a bum"})
