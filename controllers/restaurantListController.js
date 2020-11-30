@@ -8,15 +8,18 @@ router.post('/', function(req, res) {
     let userID = req.user.id;
     let restName = req.body.restName;
     let address = req.body.address;
-    let visited = req.body.visited;
     let notes = req.body.notes;
+    let phone = req.body.phone;
+    let hours = req.body.hours;
     
-    Restaurant.create({
-        userID: userID,
-        restName: restName,
-        address: address,
-        visited: visited,
-        notes: notes
+    Restaurant.findOrCreate({
+        where: {userID: userID, restName: restName},
+            defaults: {
+            userID: userID, restName: restName, address: address,
+            notes: notes,
+            phone: phone,
+            hours: hours
+            }
     }).then(
         function createSuccess(restData) {
             res.json({data: restData});

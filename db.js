@@ -14,11 +14,11 @@ sequelize.authenticate().then(
 );
 
 const User = sequelize.import('./models/user');
-const Comments = sequelize.import('./models/totry');
+const Lists = sequelize.import('./models/totry');
 
 
-// Comments.belongsTo(User);
-// User.hasMany(Comments);
+Lists.belongsTo(User);
+User.hasMany(Lists);
 
 
 

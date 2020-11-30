@@ -45,9 +45,11 @@ router.put('/', function(req,res) {
     let userID = req.user.id;
     let comment = req.body.comment;
     let id = req.body.id;
+    let starRating = req.body.starRating;
 
     Comment.update({
-        comment: comment
+        comment: comment,
+        starRating: starRating
     }, {where: {id: id, userID: userID}}).then(
         function success(data){
             res.json({
