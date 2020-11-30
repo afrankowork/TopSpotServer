@@ -60,6 +60,19 @@ router.put('/', function(req,res) {
     )
 
 })
+
+router.delete('/', function(req,res) {
+    let userId = req.user.id;
+    let id = req.body.id;
+    
+    Comment.destroy({
+    where:{id: id, userID: userId}
+}).then( function success(data){
+    res.send('delete successful')
+}), function error(err){
+    res.send('Invalid User', err)
+}
+})
     
 
   
