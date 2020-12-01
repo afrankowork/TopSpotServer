@@ -57,4 +57,18 @@ router.post('/login', function(req, res) {
 })
 
 
+router.get('/getusers', function(req, res ) {
+    
+    User.findAll().then(function grabComments(users){
+    res.json({
+        users : users
+
+    })
+    }, function(err) {
+        res.send(500, err.message)
+    }
+    );
+})
+
+
 module.exports = router;
