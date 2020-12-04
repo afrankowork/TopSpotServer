@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "author": "YOUR NAME HERE",
+  "author": "Adam Frankowski",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -16,6 +16,7 @@
     "jsonwebtoken": "^8.2.0",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.37.0"
+    "sequelize": "^4.37.0",
+    "socket.io": "^3.0.3"
   }
 }

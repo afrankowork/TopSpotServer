@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let sequelize = require('../db');
 let Restaurant = sequelize.import('../models/totry.js')
+let User = sequelize.import('../models/user.js')
 
 router.post('/', function(req, res) {
     
@@ -79,6 +80,19 @@ router.delete('/:id', function(req,res){
     function deleteError(err) {
         res.send(500, err.message)
     })
+})
+
+//Get One user is placed here as it needs to have access to user id from token and it needed to be placed
+//behind a protected route
+router.get('/getone', function(req, res) {
+    let userID = req.user.id;
+    User.findAll({where: {id: userID}}).then(function grabInfo(info) {
+        res.json({
+            info: info
+        })
+    }, function(err) {
+        res.send(500, err.message)
+    });
 })
 
 module.exports = router;
