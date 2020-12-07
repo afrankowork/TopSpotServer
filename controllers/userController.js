@@ -71,6 +71,16 @@ router.get('/getusers', function(req, res ) {
 })
 
 
+router.delete('/deluser', function(req, res) {
+    let id = req.body.id
+    User.destroy({where:{id: id}}).then(
+        function onSuccess(data){
+            res.send('User Deleted.')
+        }
+    ), function(err){
+        res.send('Deletion Unsuccessful', err)
+    }
+})
 
 
 module.exports = router;
